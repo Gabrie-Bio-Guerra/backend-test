@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.ManyToOne;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Vehicle {
@@ -16,8 +16,8 @@ public class Vehicle {
 	private String color;
 	private String plate;
 	private int type; /* 0 -> Car / 1 -> Motorcycle */
-	//@ManyToOne
-	//private Park park;
+	@ManyToOne
+	private Park park;
 	private Boolean status;
 	
 	public Long getId() {
@@ -68,13 +68,13 @@ public class Vehicle {
 		this.type = type;
 	}
 	
-	/*public Park getPark() {
+	public Park getPark() {
 		return park;
 	}
 	
 	public void setPark(Park park) {
 		this.park = park;
-	}*/
+	}
 	
 	public Boolean getStatus() {
 		return status;

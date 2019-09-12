@@ -24,7 +24,7 @@ public class VehicleDto {
 		this.color = vehicle.getColor();
 		this.plate = vehicle.getPlate();
 		this.type = vehicle.getType();
-		//this.park = vehicle.getPark();
+		this.park = vehicle.getPark();
 		this.status = vehicle.getStatus();
 	}
 

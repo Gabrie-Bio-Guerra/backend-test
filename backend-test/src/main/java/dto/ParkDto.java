@@ -25,7 +25,7 @@ public class ParkDto {
 		this.phone = park.getPhone();
 		this.carSpaces = park.getCarSpaces();
 		this.motorcycleSpaces = park.getMotorcycleSpaces();
-		//this.vehicles = park.getVehicles();
+		this.vehicles = park.getVehicles();
 		
 	}
 	
