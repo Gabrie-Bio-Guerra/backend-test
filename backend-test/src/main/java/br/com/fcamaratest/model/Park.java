@@ -22,7 +22,7 @@ public class Park {
 	private int carSpaces;
 	private int motorcycleSpaces;
 
-	@OneToMany(mappedBy = "park")
+	@OneToMany(mappedBy = "parkId")
 	private List<Vehicle> vehicles = new ArrayList<>();
 
 	public Long getId() {

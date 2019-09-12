@@ -14,7 +14,7 @@ public class VehicleDto {
 	private String color;
 	private String plate;
 	private String type; 
-	private Park park;
+	private Integer parkId;
 	private Boolean status; /* true -> on park / false -> on street */
 	
 	public VehicleDto (Vehicle vehicle) {
@@ -24,7 +24,7 @@ public class VehicleDto {
 		this.color = vehicle.getColor();
 		this.plate = vehicle.getPlate();
 		this.type = vehicle.getType();
-		this.park = vehicle.getPark();
+		this.parkId = vehicle.getParkId();
 		this.status = vehicle.getStatus();
 	}
 
@@ -52,8 +52,8 @@ public class VehicleDto {
 		return type;
 	}
 	
-	public Park getPark() {
-		return park;
+	public Integer getPark() {
+		return parkId;
 	}
 	
 	public Boolean getStatus() {
