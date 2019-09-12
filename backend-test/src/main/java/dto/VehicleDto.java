@@ -8,7 +8,7 @@ import model.Vehicle;
 
 public class VehicleDto {
 	
-	private int id;
+	private Long id;
 	private String brand;
 	private String model; 
 	private String color;
@@ -24,11 +24,11 @@ public class VehicleDto {
 		this.color = vehicle.getColor();
 		this.plate = vehicle.getPlate();
 		this.type = vehicle.getType();
-		this.park = vehicle.getPark();
+		//this.park = vehicle.getPark();
 		this.status = vehicle.getStatus();
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	
@@ -60,7 +60,7 @@ public class VehicleDto {
 		return status;
 	}
 	
-	public List<VehicleDto> convert(List<Vehicle> vehicles){
+	public static List<VehicleDto> convert(List<Vehicle> vehicles){
 		return vehicles.stream().map(VehicleDto::new).collect(Collectors.toList());
 	}
 	

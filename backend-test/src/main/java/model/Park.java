@@ -1,33 +1,33 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+//import javax.persistence.OneToMany;
 
 @Entity
 public class Park {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	private String name;
 	private String cnpj;
 	private String address;
 	private String phone;
 	private int carSpaces;
 	private int motorcycleSpaces;
-	@OneToMany(mappedBy = "park")
-	private List<Vehicle> vehicles = new ArrayList<>();
+	//@OneToMany(mappedBy = "park")
+	//private List<Vehicle> vehicles = new ArrayList<>();
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -78,12 +78,12 @@ public class Park {
 		this.motorcycleSpaces = motorcycleSpaces;
 	}
 	
-	public List<Vehicle> getVehicles() {
+	/*public List<Vehicle> getVehicles() {
 		return vehicles;
 	}
 	
 	public void setVehicles(List<Vehicle> vehicles) {
 		this.vehicles = vehicles;
-	}
+	}*/
 
 }

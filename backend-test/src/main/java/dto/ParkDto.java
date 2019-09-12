@@ -9,7 +9,7 @@ import model.Park;
 
 public class ParkDto {
 	
-	private int id;
+	private Long id;
 	private String name;
 	private String address;
 	private String phone;
@@ -25,11 +25,11 @@ public class ParkDto {
 		this.phone = park.getPhone();
 		this.carSpaces = park.getCarSpaces();
 		this.motorcycleSpaces = park.getMotorcycleSpaces();
-		this.vehicles = park.getVehicles();
+		//this.vehicles = park.getVehicles();
 		
 	}
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	
@@ -57,7 +57,7 @@ public class ParkDto {
 		return vehicles;
 	}
 	
-	public List<ParkDto> convert(List<Park> park){
+	public static List<ParkDto> convert(List<Park> park){
 		return park.stream().map(ParkDto::new).collect(Collectors.toList());
 	}
 

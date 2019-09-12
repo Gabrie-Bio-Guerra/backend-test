@@ -4,27 +4,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+//import javax.persistence.ManyToOne;
 
 @Entity
 public class Vehicle {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	private String brand;
 	private String model; 
 	private String color;
 	private String plate;
 	private int type; /* 0 -> Car / 1 -> Motorcycle */
-	@ManyToOne
-	private Park park;
+	//@ManyToOne
+	//private Park park;
 	private Boolean status;
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -68,13 +68,13 @@ public class Vehicle {
 		this.type = type;
 	}
 	
-	public Park getPark() {
+	/*public Park getPark() {
 		return park;
 	}
 	
 	public void setPark(Park park) {
 		this.park = park;
-	}
+	}*/
 	
 	public Boolean getStatus() {
 		return status;
