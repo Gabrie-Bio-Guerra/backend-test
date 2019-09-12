@@ -15,7 +15,7 @@ public class Vehicle {
 	private String model; 
 	private String color;
 	private String plate;
-	private int type; /* 0 -> Car / 1 -> Motorcycle */
+	private String type;
 	@ManyToOne
 	private Park park;
 	private Boolean status;
@@ -60,11 +60,11 @@ public class Vehicle {
 		this.plate = plate;
 	}
 	
-	public int getType() {
+	public String getType() {
 		return type;
 	}
 	
-	public void setType(int type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 	

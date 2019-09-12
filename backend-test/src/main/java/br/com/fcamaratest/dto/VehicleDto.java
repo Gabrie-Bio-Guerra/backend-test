@@ -13,7 +13,7 @@ public class VehicleDto {
 	private String model; 
 	private String color;
 	private String plate;
-	private int type; /* 0 -> Car / 1 -> Motorcycle */
+	private String type; 
 	private Park park;
 	private Boolean status; /* true -> on park / false -> on street */
 	
@@ -48,7 +48,7 @@ public class VehicleDto {
 		return plate;
 	}
 	
-	public int getType() {
+	public String getType() {
 		return type;
 	}
 	
