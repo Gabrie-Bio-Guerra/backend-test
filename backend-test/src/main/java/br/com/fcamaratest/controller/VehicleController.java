@@ -1,4 +1,4 @@
-package controller;
+package br.com.fcamaratest.controller;
 
 import java.util.List;
 
@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dto.VehicleDto;
-import model.Vehicle;
-import repository.VehicleRepository;;
+import br.com.fcamaratest.dto.VehicleDto;
+import br.com.fcamaratest.model.Vehicle;
+import br.com.fcamaratest.repository.VehicleRepository;;
 
 @RestController
 public class VehicleController {

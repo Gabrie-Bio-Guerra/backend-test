@@ -1,11 +1,11 @@
-package dto;
+package br.com.fcamaratest.dto;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import model.Vehicle;
-import model.Park;
+import br.com.fcamaratest.model.Park;
+import br.com.fcamaratest.model.Vehicle;
 
 public class ParkDto {
 	

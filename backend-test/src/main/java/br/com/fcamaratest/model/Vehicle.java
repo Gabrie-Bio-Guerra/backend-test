@@ -1,4 +1,4 @@
-package model;
+package br.com.fcamaratest.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

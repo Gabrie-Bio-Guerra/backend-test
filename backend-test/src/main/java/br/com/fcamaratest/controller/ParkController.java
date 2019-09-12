@@ -1,4 +1,4 @@
-package controller;
+package br.com.fcamaratest.controller;
 
 import java.util.List;
 
@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dto.ParkDto;
-import model.Park;
-import repository.ParkRepository;
+import br.com.fcamaratest.dto.ParkDto;
+import br.com.fcamaratest.model.Park;
+import br.com.fcamaratest.repository.ParkRepository;
 
 @RestController
 public class ParkController {
