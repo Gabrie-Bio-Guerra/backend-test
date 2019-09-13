@@ -1,14 +1,24 @@
 package br.com.fcamaratest.form;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import br.com.fcamaratest.model.Vehicle;
 
 public class VehicleForm {
 	
+	@NotNull @NotEmpty
 	private String brand;
-	private String model; 
+	@NotNull @NotEmpty
+	private String model;
+	@NotNull @NotEmpty
 	private String color;
+	@NotNull @NotEmpty
 	private String plate;
-	private String type; 
+	@NotNull @NotEmpty
+	private String type;
+	@NotNull @Min(value = 1L, message = "The value must be positive") //@Max(Número de estacionamentos)
 	private Integer parkId;
 
 	public Integer getparkId() {

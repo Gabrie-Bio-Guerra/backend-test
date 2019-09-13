@@ -60,5 +60,10 @@ public class ParkDto {
 	public static List<ParkDto> convert(List<Park> park){
 		return park.stream().map(ParkDto::new).collect(Collectors.toList());
 	}
+	
+	public static ParkDto convertOne(Park park){
+		return new ParkDto(park);
+
+	}
 
 }

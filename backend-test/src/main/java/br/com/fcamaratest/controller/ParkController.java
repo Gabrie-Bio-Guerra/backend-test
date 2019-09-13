@@ -3,9 +3,12 @@ package br.com.fcamaratest.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,9 +59,15 @@ public class ParkController {
 		
 		return ParkDto.convert(parks);
 	}
+	
+	@GetMapping("/{id}")
+	public ParkDto getOne(@PathVariable Long id) {
+		Park park = parkRepository.getOne(id);
+		return ParkDto.convertOne(park);
+	}
 
 	@PostMapping
-	public ResponseEntity<ParkDto> register(@RequestBody ParkForm form, UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<ParkDto> register(@RequestBody @Valid ParkForm form, UriComponentsBuilder uriBuilder) {
 		Park park = form.convert();
 		parkRepository.save(park);
 

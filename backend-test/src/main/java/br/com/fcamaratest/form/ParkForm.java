@@ -1,12 +1,19 @@
 package br.com.fcamaratest.form;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import br.com.fcamaratest.model.Park;
 
 public class ParkForm {
 	
+	@NotNull @NotEmpty
 	private String name;
+	@NotNull @NotEmpty
 	private String cnpj;
+	@NotNull @NotEmpty
 	private String address;
+	@NotNull @NotEmpty
 	private String phone;
 	
 	public String getName() {

@@ -57,5 +57,9 @@ public class VehicleDto {
 	public static List<VehicleDto> convert(List<Vehicle> vehicles){
 		return vehicles.stream().map(VehicleDto::new).collect(Collectors.toList());
 	}
+
+	public static VehicleDto convertOne(Vehicle vehicle) {
+		return new VehicleDto(vehicle);
+	}
 	
 }

@@ -2,17 +2,23 @@ package br.com.fcamaratest.controller;
 
 import java.net.URI;
 import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import br.com.fcamaratest.dto.ParkDto;
 import br.com.fcamaratest.dto.VehicleDto;
 import br.com.fcamaratest.form.VehicleForm;
+import br.com.fcamaratest.model.Park;
 import br.com.fcamaratest.model.Vehicle;
 import br.com.fcamaratest.repository.VehicleRepository;;
 
@@ -63,9 +69,15 @@ public class VehicleController {
 
 		return VehicleDto.convert(vehicles);
 	}
+	
+	@GetMapping("/{id}")
+	public VehicleDto getOne(@PathVariable Long id) {
+		Vehicle vehicle = vehicleRepository.getOne(id);
+		return VehicleDto.convertOne(vehicle);
+	}
 
 	@PostMapping
-	public ResponseEntity<VehicleDto> register(@RequestBody VehicleForm form, UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<VehicleDto> register(@RequestBody @Valid VehicleForm form, UriComponentsBuilder uriBuilder) {
 		Vehicle vehicle = form.convert();
 		vehicleRepository.save(vehicle);
 
