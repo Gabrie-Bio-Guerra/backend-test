@@ -19,18 +19,16 @@ public class Vehicle {
 	private String plate;
 	private String type;
 	private Integer parkId;
-	private Boolean status;
 
 	public Vehicle() {
 	}
 
-	public Vehicle(String brand, String model, String color, String plate, String type, Integer park, Boolean status) {
+	public Vehicle(String brand, String model, String color, String plate, String type, Integer park) {
 		this.brand = brand;
 		this.model = model;
 		this.color = color;
 		this.plate = plate;
 		this.type = type;
-		this.status = status;
 		this.parkId = park;
 	}
 
@@ -88,14 +86,6 @@ public class Vehicle {
 
 	public void setParkId(Integer park) {
 		this.parkId = park;
-	}
-
-	public Boolean getStatus() {
-		return status;
-	}
-
-	public void setStatus(Boolean status) {
-		this.status = status;
 	}
 
 }

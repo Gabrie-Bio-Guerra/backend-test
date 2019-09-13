@@ -35,10 +35,6 @@ public class VehicleController {
 			System.out.println("Option: " + option + " / " + "Valor: " + value);
 			
 			switch(option) {
-				case "status":{
-					vehicles = vehicleRepository.findByStatus(Boolean.parseBoolean(value));
-				}break;
-				
 				case "type":{
 					vehicles = vehicleRepository.findByType(value);
 				}break;

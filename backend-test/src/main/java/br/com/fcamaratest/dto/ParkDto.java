@@ -13,8 +13,8 @@ public class ParkDto {
 	private String name;
 	private String address;
 	private String phone;
-	private int carSpaces;
-	private int motorcycleSpaces;
+//	private int carSpaces;
+//	private int motorcycleSpaces;
 	private List<Vehicle> vehicles = new ArrayList<>();
 	
 	public ParkDto(Park park) {
@@ -23,8 +23,8 @@ public class ParkDto {
 		this.name = park.getName();
 		this.address = park.getAddress();
 		this.phone = park.getPhone();
-		this.carSpaces = park.getCarSpaces();
-		this.motorcycleSpaces = park.getMotorcycleSpaces();
+//		this.carSpaces = park.getCarSpaces();
+//		this.motorcycleSpaces = park.getMotorcycleSpaces();
 		this.vehicles = park.getVehicles();
 		
 	}
@@ -45,13 +45,13 @@ public class ParkDto {
 		return phone;
 	}
 	
-	public int getCarSpaces() {
-		return carSpaces;
-	}
-	
-	public int getMotorcycleSpaces() {
-		return motorcycleSpaces;
-	}
+//	public int getCarSpaces() {
+//		return carSpaces;
+//	}
+//	
+//	public int getMotorcycleSpaces() {
+//		return motorcycleSpaces;
+//	}
 	
 	public List<Vehicle> getVehicles() {
 		return vehicles;

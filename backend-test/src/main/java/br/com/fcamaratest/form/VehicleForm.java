@@ -11,7 +11,6 @@ public class VehicleForm {
 	private String color;
 	private String plate;
 	private String type; 
-	private Boolean status;
 	private Integer parkId;
 
 	public Integer getparkId() {
@@ -50,15 +49,9 @@ public class VehicleForm {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public Boolean getStatus() {
-		return status;
-	}
-	public void setStatus(Boolean status) {
-		this.status = status;
-	}
 	
 	public Vehicle convert(ParkRepository parkRepository){
-		Vehicle vehicle =  new Vehicle(brand, model, color, plate, type, parkId, status);
+		Vehicle vehicle =  new Vehicle(brand, model, color, plate, type, parkId);
 		return vehicle;
 	}
 	

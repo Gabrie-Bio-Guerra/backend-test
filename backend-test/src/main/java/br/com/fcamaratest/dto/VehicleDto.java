@@ -15,7 +15,6 @@ public class VehicleDto {
 	private String plate;
 	private String type; 
 	private Integer parkId;
-	private Boolean status; /* true -> on park / false -> on street */
 	
 	public VehicleDto (Vehicle vehicle) {
 		this.id = vehicle.getId();
@@ -25,7 +24,6 @@ public class VehicleDto {
 		this.plate = vehicle.getPlate();
 		this.type = vehicle.getType();
 		this.parkId = vehicle.getParkId();
-		this.status = vehicle.getStatus();
 	}
 
 	public Long getId() {
@@ -56,9 +54,6 @@ public class VehicleDto {
 		return parkId;
 	}
 	
-	public Boolean getStatus() {
-		return status;
-	}
 	
 	public static List<VehicleDto> convert(List<Vehicle> vehicles){
 		return vehicles.stream().map(VehicleDto::new).collect(Collectors.toList());
