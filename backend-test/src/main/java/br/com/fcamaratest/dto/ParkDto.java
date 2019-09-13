@@ -1,6 +1,5 @@
 package br.com.fcamaratest.dto;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,7 +8,7 @@ import br.com.fcamaratest.model.Park;
 import br.com.fcamaratest.model.Vehicle;
 
 public class ParkDto {
-	
+
 	private Long id;
 	private String name;
 	private String address;

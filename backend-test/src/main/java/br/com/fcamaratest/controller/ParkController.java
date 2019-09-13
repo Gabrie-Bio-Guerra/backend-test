@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -23,6 +22,7 @@ import br.com.fcamaratest.dto.ParkDto;
 import br.com.fcamaratest.form.ParkForm;
 import br.com.fcamaratest.model.Park;
 import br.com.fcamaratest.repository.ParkRepository;
+import br.com.fcamaratest.service.ParkService;
 
 @RestController
 @RequestMapping("/parks")
@@ -30,53 +30,28 @@ public class ParkController {
 
 	@Autowired
 	private ParkRepository parkRepository;
+	
+	@Autowired
+	private ParkService parkService;
 
 	@GetMapping
-	public List<ParkDto> list(String option, String value) {
-		List<Park> parks = null;
-		if (option != null && option != "") {
-			switch (option) {
-				case "name": {
-					parks = parkRepository.findByName(value);
-				}
-					break;
-	
-				case "cnpj": {
-					parks = parkRepository.findByCnpj(value);
-				}break;
-	
-				case "address": {
-					parks = parkRepository.findByAddress(value);
-				}
-					break;
-	
-				case "phone": {
-					parks = parkRepository.findByPhone(value);
-				}break;
-				
-				default: {
-					parks = parkRepository.findAll();
-				}
-			}
-		} else
-			parks = parkRepository.findAll();
-		
-		return ParkDto.convert(parks);
+	public ResponseEntity<List<ParkDto>> list(String option, String value) {		
+		return ResponseEntity.ok(parkService.retorna(option, value));
 	}
-	
+
 	@GetMapping("/{id}")
 	public ParkDto getOne(@PathVariable Long id) {
 		Park park = parkRepository.getOne(id);
 		return ParkDto.convertOne(park);
 	}
-	
+
 	@PutMapping("/{id}")
 	@Transactional
 	public ResponseEntity<ParkDto> update(@PathVariable Long id, @RequestBody @Valid ParkForm form) {
 		Park park = form.update(id, parkRepository);
 		return ResponseEntity.ok(ParkDto.convertOne(park));
 	}
-	
+
 	@DeleteMapping("/{id}")
 	@Transactional
 	public ResponseEntity<?> delete(@PathVariable Long id) {
