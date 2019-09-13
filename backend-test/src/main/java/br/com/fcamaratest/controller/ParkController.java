@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -42,7 +43,7 @@ public class ParkController {
 	
 				case "cnpj": {
 					parks = parkRepository.findByCnpj(value);
-				}
+				}break;
 	
 				case "address": {
 					parks = parkRepository.findByAddress(value);
@@ -51,7 +52,7 @@ public class ParkController {
 	
 				case "phone": {
 					parks = parkRepository.findByPhone(value);
-				}
+				}break;
 				
 				default: {
 					parks = parkRepository.findAll();
