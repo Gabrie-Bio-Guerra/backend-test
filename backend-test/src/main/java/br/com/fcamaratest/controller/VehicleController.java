@@ -19,56 +19,58 @@ import br.com.fcamaratest.repository.VehicleRepository;;
 @RestController
 @RequestMapping("/vehicles")
 public class VehicleController {
-	
+
 	@Autowired
 	private VehicleRepository vehicleRepository;
-	
+
 	@GetMapping
-	public List<VehicleDto> list(String option, String value){
+	public List<VehicleDto> list(String option, String value) {
 		List<Vehicle> vehicles = null;
-		if(option == null) {
-			vehicles = vehicleRepository.findAll();
-		}else {
-			System.out.println("Option: " + option + " / " + "Valor: " + value);
-			
-			switch(option) {
-				case "type":{
+		if (option != null || option != "") {
+
+			switch (option) {
+				case "type": {
 					vehicles = vehicleRepository.findByType(value);
-				}break;
-				
-				case "color":{
+				}
+					break;
+	
+				case "color": {
 					vehicles = vehicleRepository.findByColor(value);
-				}break;
-				
-				case "model":{
+				}
+					break;
+	
+				case "model": {
 					vehicles = vehicleRepository.findByModel(value);
-				}break;
-			
-				case "brand":{
+				}
+					break;
+	
+				case "brand": {
 					vehicles = vehicleRepository.findByBrand(value);
-				}break;
-				
-				case "plate":{
+				}
+					break;
+	
+				case "plate": {
 					vehicles = vehicleRepository.findByPlate(value);
-				}break;
-				
-				default:{
-				vehicles = vehicleRepository.findAll();
+				}
+					break;
+	
+				default: {
+					vehicles = vehicleRepository.findAll();
 				}
 			}
-			
-		}
-		
+		}else 
+			vehicles = vehicleRepository.findAll();
+
 		return VehicleDto.convert(vehicles);
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<VehicleDto> register(@RequestBody VehicleForm form, UriComponentsBuilder uriBuilder){
+	public ResponseEntity<VehicleDto> register(@RequestBody VehicleForm form, UriComponentsBuilder uriBuilder) {
 		Vehicle vehicle = form.convert();
 		vehicleRepository.save(vehicle);
-		
+
 		URI uri = uriBuilder.path("/vehicles/{id}").buildAndExpand(vehicle.getId()).toUri();
 		return ResponseEntity.created(uri).body(new VehicleDto(vehicle));
 	}
-	
+
 }
