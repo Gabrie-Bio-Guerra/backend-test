@@ -13,6 +13,7 @@ public class ParkDto {
 	private String name;
 	private String address;
 	private String phone;
+	private Integer spaces;
 	private List<Vehicle> vehicles = new ArrayList<>();
 	
 	public ParkDto(Park park) {
@@ -22,6 +23,7 @@ public class ParkDto {
 		this.address = park.getAddress();
 		this.phone = park.getPhone();
 		this.vehicles = park.getVehicles();
+		this.spaces = park.getSpaces();
 		
 	}
 	
@@ -53,4 +55,7 @@ public class ParkDto {
 		return new ParkDto(park);
 	}
 
+	public Integer getSpaces() {
+		return spaces;
+	}
 }

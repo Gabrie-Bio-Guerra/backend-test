@@ -78,7 +78,7 @@ public class ParkController {
 	
 	@DeleteMapping("/{id}")
 	@Transactional
-	public ResponseEntity delete(@PathVariable Long id) {
+	public ResponseEntity<?> delete(@PathVariable Long id) {
 		parkRepository.deleteById(id);
 		return ResponseEntity.ok().build();
 	}

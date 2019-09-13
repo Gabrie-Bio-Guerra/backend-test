@@ -8,7 +8,9 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import br.com.fcamaratest.model.Park;
 import br.com.fcamaratest.model.Vehicle;
+import br.com.fcamaratest.repository.ParkRepository;
 import br.com.fcamaratest.repository.VehicleRepository;
 
 public class VehicleForm {
@@ -25,7 +27,6 @@ public class VehicleForm {
 	private String type;
 	@Min(value = 1L, message = "The value must be positive") //@Max(Número de estacionamentos)
 	private Integer park;
-	//coloca as variáveis zeradas e reseta a entrada
 
 	public String getBrand() {
 		return brand;
@@ -64,9 +65,24 @@ public class VehicleForm {
 		this.park = park;
 	}
 	
-	public Vehicle convert(){
+	public Vehicle convert(ParkRepository parkRepository){
 		Vehicle vehicle =  new Vehicle(brand, model, color, plate, type, park);
+		if(vehicle.getPark() == null) {
+			vehicle.setEntry(null);
+		}else {
+			decreaseSpaces(parkRepository, vehicle);
+		}
 		return vehicle;
+	}
+	
+	public void decreaseSpaces(ParkRepository parkRepository, Vehicle vehicle) {
+		Park park = parkRepository.getOne(Long.valueOf(vehicle.getPark()));
+		park.setSpaces(park.getSpaces() - 1);
+	}
+	
+	public void increaseSpaces(ParkRepository parkRepository, Integer oldParkId) {
+		Park park = parkRepository.getOne(Long.valueOf(oldParkId));
+		park.setSpaces(park.getSpaces() + 1);
 	}
 	
 	private void checkOut(Vehicle vehicle) {
@@ -84,10 +100,10 @@ public class VehicleForm {
 		
 	}
 	
-	public Vehicle update(Long id, VehicleRepository vehicleRepository) {
+	public Vehicle update(Long id, VehicleRepository vehicleRepository, ParkRepository parkRepository) {
 		Vehicle vehicle = vehicleRepository.getOne(id);
 		if(vehicle.getPark() != null) {
-			//Long oldId = vehicle.getId();
+			Integer oldParkId = vehicle.getPark();
 			vehicle.setBrand(this.brand);
 			vehicle.setModel(this.model);
 			vehicle.setColor(this.color);
@@ -97,6 +113,11 @@ public class VehicleForm {
 			//e se ele mudar para outro diretamente?
 			if(vehicle.getPark() == null) {
 				checkOut(vehicle);
+				increaseSpaces(parkRepository, oldParkId);
+			}
+			if((vehicle.getPark() != oldParkId) && (oldParkId != null) && (vehicle.getPark() != null)) {
+				decreaseSpaces(parkRepository, vehicle);
+				increaseSpaces(parkRepository, oldParkId);
 			}
 		}else {
 			vehicle.setBrand(this.brand);
@@ -105,7 +126,10 @@ public class VehicleForm {
 			vehicle.setPlate(this.plate);
 			vehicle.setType(this.type);
 			vehicle.setPark(this.park);
-			checkIn(vehicle);
+			if(vehicle.getPark() != null) {
+				checkIn(vehicle);
+				decreaseSpaces(parkRepository, vehicle);
+			}
 		}
 		
 		
