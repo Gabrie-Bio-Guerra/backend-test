@@ -1,8 +1,6 @@
 package br.com.fcamaratest.form;
 
-import br.com.fcamaratest.model.Park;
 import br.com.fcamaratest.model.Vehicle;
-import br.com.fcamaratest.repository.ParkRepository;
 
 public class VehicleForm {
 	
@@ -50,7 +48,7 @@ public class VehicleForm {
 		this.type = type;
 	}
 	
-	public Vehicle convert(ParkRepository parkRepository){
+	public Vehicle convert(){
 		Vehicle vehicle =  new Vehicle(brand, model, color, plate, type, parkId);
 		return vehicle;
 	}

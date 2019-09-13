@@ -21,9 +21,17 @@ public class Park {
 	private String phone;
 	//private int carSpaces;
 	//private int motorcycleSpaces;
-
 	@OneToMany(mappedBy = "parkId")
 	private List<Vehicle> vehicles = new ArrayList<>();
+	
+	public Park() {}
+	
+	public Park(String name, String cnpj, String address, String phone) {
+		this.name = name;
+		this.cnpj = cnpj;
+		this.address = address;
+		this.phone = phone;
+	}
 
 	public Long getId() {
 		return id;

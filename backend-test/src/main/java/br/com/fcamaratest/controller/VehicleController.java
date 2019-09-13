@@ -14,7 +14,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 import br.com.fcamaratest.dto.VehicleDto;
 import br.com.fcamaratest.form.VehicleForm;
 import br.com.fcamaratest.model.Vehicle;
-import br.com.fcamaratest.repository.ParkRepository;
 import br.com.fcamaratest.repository.VehicleRepository;;
 
 @RestController
@@ -23,8 +22,6 @@ public class VehicleController {
 	
 	@Autowired
 	private VehicleRepository vehicleRepository;
-	@Autowired
-	private ParkRepository parkRepository;
 	
 	@GetMapping
 	public List<VehicleDto> list(String option, String value){
@@ -67,12 +64,7 @@ public class VehicleController {
 	
 	@PostMapping
 	public ResponseEntity<VehicleDto> register(@RequestBody VehicleForm form, UriComponentsBuilder uriBuilder){
-		Vehicle vehicle = form.convert(parkRepository);
-		vehicle.toString();
-		
-		
-		
-		
+		Vehicle vehicle = form.convert();
 		vehicleRepository.save(vehicle);
 		
 		URI uri = uriBuilder.path("/vehicles/{id}").buildAndExpand(vehicle.getId()).toUri();
