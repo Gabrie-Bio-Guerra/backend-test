@@ -5,6 +5,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import br.com.fcamaratest.model.Vehicle;
+import br.com.fcamaratest.repository.VehicleRepository;
 
 public class VehicleForm {
 	
@@ -60,6 +61,16 @@ public class VehicleForm {
 	
 	public Vehicle convert(){
 		Vehicle vehicle =  new Vehicle(brand, model, color, plate, type, parkId);
+		return vehicle;
+	}
+	public Vehicle update(Long id, VehicleRepository vehicleRepository) {
+		Vehicle vehicle = vehicleRepository.getOne(id);
+		vehicle.setBrand(this.brand);
+		vehicle.setModel(this.model);
+		vehicle.setColor(this.color);
+		vehicle.setPlate(this.plate);
+		vehicle.setType(this.type);
+		vehicle.setParkId(this.parkId);
 		return vehicle;
 	}
 	

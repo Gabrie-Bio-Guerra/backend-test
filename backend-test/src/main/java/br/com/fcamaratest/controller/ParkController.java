@@ -3,13 +3,16 @@ package br.com.fcamaratest.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -65,8 +68,23 @@ public class ParkController {
 		Park park = parkRepository.getOne(id);
 		return ParkDto.convertOne(park);
 	}
+	
+	@PutMapping("/{id}")
+	@Transactional
+	public ResponseEntity<ParkDto> update(@PathVariable Long id, @RequestBody @Valid ParkForm form) {
+		Park park = form.update(id, parkRepository);
+		return ResponseEntity.ok(ParkDto.convertOne(park));
+	}
+	
+	@DeleteMapping("/{id}")
+	@Transactional
+	public ResponseEntity delete(@PathVariable Long id) {
+		parkRepository.deleteById(id);
+		return ResponseEntity.ok().build();
+	}
 
 	@PostMapping
+	@Transactional
 	public ResponseEntity<ParkDto> register(@RequestBody @Valid ParkForm form, UriComponentsBuilder uriBuilder) {
 		Park park = form.convert();
 		parkRepository.save(park);

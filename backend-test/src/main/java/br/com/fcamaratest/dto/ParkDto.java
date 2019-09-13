@@ -63,7 +63,6 @@ public class ParkDto {
 	
 	public static ParkDto convertOne(Park park){
 		return new ParkDto(park);
-
 	}
 
 }

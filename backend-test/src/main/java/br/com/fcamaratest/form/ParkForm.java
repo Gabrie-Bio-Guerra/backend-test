@@ -4,6 +4,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import br.com.fcamaratest.model.Park;
+import br.com.fcamaratest.repository.ParkRepository;
 
 public class ParkForm {
 	
@@ -46,5 +47,12 @@ public class ParkForm {
 		return park;
 	}
 
-	
+	public Park update(Long id, ParkRepository parkRepository) {
+		Park park = parkRepository.getOne(id);
+		park.setName(this.name);
+		park.setCnpj(this.cnpj);
+		park.setAddress(this.address);
+		park.setPhone(this.phone);
+		return park;
+	}
 }
