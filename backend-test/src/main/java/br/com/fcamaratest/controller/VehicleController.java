@@ -18,11 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.fcamaratest.dto.ParkDto;
 import br.com.fcamaratest.dto.VehicleDto;
-import br.com.fcamaratest.form.ParkForm;
 import br.com.fcamaratest.form.VehicleForm;
-import br.com.fcamaratest.model.Park;
 import br.com.fcamaratest.model.Vehicle;
 import br.com.fcamaratest.repository.VehicleRepository;;
 
@@ -88,7 +85,7 @@ public class VehicleController {
 	
 	@DeleteMapping("/{id}")
 	@Transactional
-	public ResponseEntity delete(@PathVariable Long id) {
+	public ResponseEntity<?> delete(@PathVariable Long id) {
 		vehicleRepository.deleteById(id);
 		return ResponseEntity.ok().build();
 	}

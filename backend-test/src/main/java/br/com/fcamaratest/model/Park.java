@@ -19,9 +19,8 @@ public class Park {
 	private String cnpj;
 	private String address;
 	private String phone;
-	//private int carSpaces;
-	//private int motorcycleSpaces;
-	@OneToMany(mappedBy = "parkId")
+	private Integer spaces;
+	@OneToMany(mappedBy = "park")
 	private List<Vehicle> vehicles = new ArrayList<>();
 	
 	public Park() {}
@@ -31,6 +30,14 @@ public class Park {
 		this.cnpj = cnpj;
 		this.address = address;
 		this.phone = phone;
+	}
+	
+	public Integer getSpaces() {
+		return spaces;
+	}
+
+	public void setSpaces(Integer spaces) {
+		this.spaces = spaces;
 	}
 
 	public Long getId() {
@@ -72,22 +79,6 @@ public class Park {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-//	public int getCarSpaces() {
-//		return carSpaces;
-//	}
-//
-//	public void setCarSpaces(int carSpaces) {
-//		this.carSpaces = carSpaces;
-//	}
-//
-//	public int getMotorcycleSpaces() {
-//		return motorcycleSpaces;
-//	}
-//
-//	public void setMotorcycleSpaces(int motorcycleSpaces) {
-//		this.motorcycleSpaces = motorcycleSpaces;
-//	}
 
 	public List<Vehicle> getVehicles() {
 		return vehicles;

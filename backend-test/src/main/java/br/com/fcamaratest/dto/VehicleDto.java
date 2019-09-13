@@ -1,5 +1,6 @@
 package br.com.fcamaratest.dto;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,7 +14,11 @@ public class VehicleDto {
 	private String color;
 	private String plate;
 	private String type; 
-	private Integer parkId;
+	private Integer park;
+	private LocalDateTime entry;
+	private LocalDateTime exit;
+	private Long time;
+
 	
 	public VehicleDto (Vehicle vehicle) {
 		this.id = vehicle.getId();
@@ -22,8 +27,71 @@ public class VehicleDto {
 		this.color = vehicle.getColor();
 		this.plate = vehicle.getPlate();
 		this.type = vehicle.getType();
-		this.parkId = vehicle.getParkId();
+		this.park = vehicle.getPark();
+		this.entry = vehicle.getEntry();
+		this.exit = vehicle.getExit();
+		this.time = vehicle.getTime();
 	}
+
+	public LocalDateTime getEntry() {
+		return entry;
+	}
+
+
+	public void setEntry(LocalDateTime entry) {
+		this.entry = entry;
+	}
+
+
+	public LocalDateTime getExit() {
+		return exit;
+	}
+
+
+	public void setExit(LocalDateTime exit) {
+		this.exit = exit;
+	}
+
+
+	public Long getTime() {
+		return time;
+	}
+
+
+	public void setTime(Long time) {
+		this.time = time;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+
+	public void setPlate(String plate) {
+		this.plate = plate;
+	}
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 
 	public Long getId() {
 		return id;
@@ -50,7 +118,7 @@ public class VehicleDto {
 	}
 	
 	public Integer getPark() {
-		return parkId;
+		return park;
 	}
 	
 	

@@ -1,5 +1,7 @@
 package br.com.fcamaratest.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +19,10 @@ public class Vehicle {
 	private String color;
 	private String plate;
 	private String type;
-	private Integer parkId;
+	private Integer park;
+	private LocalDateTime entry = LocalDateTime.now();
+	private LocalDateTime exit;
+	private Long time;
 
 	public Vehicle() {
 	}
@@ -28,9 +33,11 @@ public class Vehicle {
 		this.color = color;
 		this.plate = plate;
 		this.type = type;
-		this.parkId = park;
+		this.setPark(park);
 	}
 
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -79,12 +86,36 @@ public class Vehicle {
 		this.type = type;
 	}
 
-	public Integer getParkId() {
-		return parkId;
+	public LocalDateTime getEntry() {
+		return entry;
 	}
 
-	public void setParkId(Integer park) {
-		this.parkId = park;
+	public void setEntry(LocalDateTime entry) {
+		this.entry = entry;
+	}
+
+	public LocalDateTime getExit() {
+		return exit;
+	}
+
+	public void setExit(LocalDateTime exit) {
+		this.exit = exit;
+	}
+
+	public Long getTime() {
+		return time;
+	}
+
+	public void setTime(Long time) {
+		this.time = time;
+	}
+
+	public Integer getPark() {
+		return park;
+	}
+
+	public void setPark(Integer park) {
+		this.park = park;
 	}
 
 }
