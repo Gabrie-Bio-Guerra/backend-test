@@ -19,14 +19,27 @@
 	</properties>
 
 	<dependencies>
-	<!--
-	 Para retornar em formato XML
+		<!--
+		 Para retornar em formato XML
 		<dependency>
-  			<groupId>com.fasterxml.jackson.dataformat</groupId>
-  			<artifactId>jackson-dataformat-xml</artifactId>
+	  		<groupId>com.fasterxml.jackson.dataformat</groupId>
+	  		<artifactId>jackson-dataformat-xml</artifactId>
 		</dependency> 
-	-->
-		
+		-->
+	
+		<!-- 
+		<dependency>
+	    	<groupId>net.sf.jasperreports</groupId>
+	    	<artifactId>jasperreports</artifactId>
+	    	<version>6.4.0</version>
+		</dependency> 
+		-->
+	
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-security</artifactId>
+		    </dependency>
+
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

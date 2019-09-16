@@ -12,3 +12,5 @@ INSERT INTO VEHICLE(brand, model, color, plate, type, park, entry) VALUES('kawas
 INSERT INTO VEHICLE(brand, model, color, plate, type, park, entry) VALUES('honda', 'titan', 'preto', 'esu1482', 'motorcycle', 2, '2019-09-05T08:00:55Z');
 INSERT INTO VEHICLE(brand, model, color, plate, type, park, entry) VALUES('honda', 'city', 'prata', 'bgr4893', 'car', 2, '2019-09-12T08:00:55Z');
 INSERT INTO VEHICLE(brand, model, color, plate, type, park, entry) VALUES('honda', 'civic', 'branco', 'afr4793', 'car', 5, '2019-09-10T08:00:55Z');
+
+INSERT INTO USERS(name, email, password) VALUES('Gabriel Bio Guerra', 'bioguerrabg@gmail.com',  '$2a$10$fW4Sf5lMKgYSn/guxdDR2uMn4hiZFPsjFqPqsoNfMbVN/tS2m07yu');
